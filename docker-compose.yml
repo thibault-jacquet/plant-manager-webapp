@@ -1,0 +1,18 @@
+version: '2'
+services:
+  plant-manager-webapp:
+    image: 'node:10-alpine'
+    working_dir: /app
+    user: node
+    volumes:
+      - '.:/app'
+    environment:
+      - PORT=3000
+      - HTTPS=true
+    command: npm start
+    ports:
+      - '3000:3000'
+networks:
+  default:
+    external:
+      name: plant_manager_network
